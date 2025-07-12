@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حروب الجيل الخامس: عرض تقديمي (الوضع الداكن)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0F172A; /* Slate-950 - Very dark blue-gray */
+            color: #E2E8F0; /* Slate-200 - Light gray for text */
+        }
+        .scroll-mt-24 { /* Adjust this value if header height changes */
+            scroll-margin-top: 6rem;
+        }
+        /* Custom scrollbar for better aesthetics in dark mode */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1E293B; /* Slate-800 */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #A78BFA; /* Purple-400 */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8B5CF6; /* Purple-500 */
+        }
+
+        /* Styles for the mobile dropdown menu */
+        .mobile-menu {
+            display: none; /* Hidden by default */
+            position: absolute;
+            top: 100%; /* Position right below the header */
+            right: 0; /* Align to the right for RTL */
+            width: 100%;
+            background-color: #1E293B; /* Dark background for menu */
+            box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+            z-index: 40; /* Below header, above content */
+            border-bottom-left-radius: 1.5rem; /* rounded-3xl */
+            border-bottom-right-radius: 1.5rem; /* rounded-3xl */
+            padding-bottom: 1.5rem;
+            transform-origin: top;
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+            transform: scaleY(0);
+            opacity: 0;
+        }
+        .mobile-menu.open {
+            display: block;
+            transform: scaleY(1);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-purple-900 to-indigo-900 text-white p-6 shadow-2xl fixed w-full top-0 z-50 rounded-b-3xl">
+        <div class="container mx-auto flex justify-between items-center relative">
+            <h1 class="text-4xl font-extrabold text-white drop-shadow-lg">حروب الجيل الخامس</h1>
+
+            <!-- Hamburger menu button for small screens -->
+            <button id="menu-button" class="md:hidden p-2 rounded-lg hover:bg-purple-700 transition duration-300 focus:outline-none focus:ring-2 focus:ring-purple-400">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:block">
+                <ul class="flex space-x-8 space-x-reverse">
+                    <li><a href="#introduction" class="text-lg hover:text-purple-300 transition duration-300 ease-in-out transform hover:scale-105">المقدمة</a></li>
+                    <li><a href="#characteristics" class="text-lg hover:text-purple-300 transition duration-300 ease-in-out transform hover:scale-105">الخصائص</a></li>
+                    <li><a href="#tools" class="text-lg hover:text-purple-300 transition duration-300 ease-in-out transform hover:scale-105">الأدوات والتكتيكات</a></li>
+                    <li><a href="#impact" class="text-lg hover:text-purple-300 transition duration-300 ease-in-out transform hover:scale-105">التأثير</a></li>
+                    <li><a href="#countermeasures" class="text-lg hover:text-purple-300 transition duration-300 ease-in-out transform hover:scale-105">المواجهة</a></li>
+                </ul>
+            </nav>
+
+            <!-- Mobile Dropdown Menu -->
+            <div id="mobile-menu" class="mobile-menu md:hidden">
+                <ul class="flex flex-col items-center py-4 space-y-4">
+                    <li><a href="#introduction" class="block text-xl py-2 px-4 hover:bg-purple-800 rounded-lg w-full text-center transition duration-300">المقدمة</a></li>
+                    <li><a href="#characteristics" class="block text-xl py-2 px-4 hover:bg-purple-800 rounded-lg w-full text-center transition duration-300">الخصائص</a></li>
+                    <li><a href="#tools" class="block text-xl py-2 px-4 hover:bg-purple-800 rounded-lg w-full text-center transition duration-300">الأدوات والتكتيكات</a></li>
+                    <li><a href="#impact" class="block text-xl py-2 px-4 hover:bg-purple-800 rounded-lg w-full text-center transition duration-300">التأثير</a></li>
+                    <li><a href="#countermeasures" class="block text-xl py-2 px-4 hover:bg-purple-800 rounded-lg w-full text-center transition duration-300">المواجهة</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="container mx-auto p-6 mt-32">
+        <!-- Introduction Section -->
+        <section id="introduction" class="bg-gray-900 p-8 mb-10 rounded-3xl shadow-2xl scroll-mt-24 border border-gray-700">
+            <div class="flex items-center mb-8">
+                <!-- Icon for Introduction -->
+                <div class="bg-purple-700 p-4 rounded-full shadow-lg mr-6 flex-shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open-text text-white">
+                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/><path d="M9 12h6"/><path d="M9 16h6"/>
+                    </svg>
+                </div>
+                <h2 class="text-5xl font-extrabold text-purple-400">مقدمة عن حروب الجيل الخامس</h2>
+            </div>
+            <p class="text-xl leading-relaxed text-gray-300">
+                حروب الجيل الخامس (5GW) هي مفهوم حديث يشير إلى تطور الصراعات المسلحة وغير المسلحة إلى مستويات أكثر تعقيدًا وتجريدًا، حيث تتجاوز الحروب التقليدية والحروب غير المتكافئة. تتميز هذه الحروب بأنها خفية وغير مركزية، وتعتمد بشكل كبير على التأثير النفسي، المعلوماتي، والتكنولوجي، بدلاً من الاشتباكات العسكرية المباشرة واسعة النطاق. الهدف الأساسي ليس تدمير العدو ماديًا، بل التأثير على إدراكه، معتقداته، وإرادته، مما يؤدي إلى تغيير سلوكه أو إخضاعه دون الحاجة إلى استخدام القوة العسكرية الصارمة.
+            </p>
+            <p class="text-xl leading-relaxed text-gray-300 mt-6">
+                تتسم 5GW بالغموض والضبابية، حيث يصعب تحديد الأطراف المتحاربة بوضوح، وغالبًا ما تكون الهجمات موجهة ضد البنية التحتية الحيوية، الأنظمة المالية، الشبكات الاجتماعية، أو حتى الوعي الجمعي للمجتمعات. إنها حرب عقول وإدراك، تستغل نقاط الضعف المجتمعية وتعتمد على التلاعب بالمعلومات لخلق حالة من الفوضى أو عدم اليقين.
+            </p>
+        </section>
+
+        <!-- Characteristics Section -->
+        <section id="characteristics" class="bg-gray-900 p-8 mb-10 rounded-3xl shadow-2xl scroll-mt-24 border border-gray-700">
+            <div class="flex items-center mb-8">
+                <!-- Icon for Characteristics -->
+                <div class="bg-purple-700 p-4 rounded-full shadow-lg mr-6 flex-shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-fingerprint text-white">
+                        <path d="M2 12C2 6.48 6.48 2 12 2s10 4.48 10 10c0 2.22-1.2 4.16-3.04 5.32A8 8 0 0 1 12 20a8 8 0 0 1-6.96-2.68C3.2 16.16 2 14.22 2 12Z"/><path d="M4.5 12a7.5 7.5 0 0 1 15 0"/><path d="M6.5 12a5.5 5.5 0 0 1 11 0"/><path d="M8.5 12a3.5 3.5 0 0 1 7 0"/><path d="M10.5 12a1.5 1.5 0 0 1 3 0"/>
+                    </svg>
+                </div>
+                <h2 class="text-5xl font-extrabold text-purple-400">خصائص حروب الجيل الخامس</h2>
+            </div>
+            <ul class="list-disc list-inside text-xl leading-relaxed text-gray-300 space-y-4">
+                <li><strong>الغموض واللا مركزية:</strong> يصعب تحديد الفاعل أو الجهة المسؤولة عن الهجمات، وغالبًا ما تكون الشبكات الفاعلة غير حكومية أو مجموعات صغيرة.</li>
+                <li><strong>التأثير على الإدراك:</strong> تستهدف هذه الحروب عقول الأفراد والمجتمعات، وتسعى لتغيير المفاهيم، القيم، والمعتقدات.</li>
+                <li><strong>الاعتماد على المعلومات والتكنولوجيا:</strong> تستخدم التكنولوجيا المتقدمة مثل الذكاء الاصطناعي، البيانات الضخمة، والروبوتات، بالإضافة إلى التلاعب بالمعلومات والأخبار الزائفة.</li>
+                <li><strong>اللا عنف المباشر:</strong> غالبًا ما تتجنب استخدام القوة العسكرية الصارمة والمواجهات المباشرة، وتفضل الأساليب الخفية وغير المباشرة.</li>
+                <li><strong>استهداف البنية التحتية غير المادية:</strong> تركز على استهداف الأنظمة السياسية، الاقتصادية، الاجتماعية، والثقافية للمجتمعات.</li>
+                <li><strong>الانتشار الواسع:</strong> لا تقتصر على ساحات المعارك التقليدية، بل تمتد إلى الفضاء السيبراني، الإعلام، والشبكات الاجتماعية.</li>
+            </ul>
+        </section>
+
+        <!-- Tools and Tactics Section -->
+        <section id="tools" class="bg-gray-900 p-8 mb-10 rounded-3xl shadow-2xl scroll-mt-24 border border-gray-700">
+            <div class="flex items-center mb-8">
+                <!-- Icon for Tools -->
+                <div class="bg-purple-700 p-4 rounded-full shadow-lg mr-6 flex-shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-crosshair text-white">
+                        <circle cx="12" cy="12" r="10"/><path d="M22 12h-4"/><path d="M6 12H2"/><path d="M12 6V2"/><path d="M12 22v-4"/>
+                    </svg>
+                </div>
+                <h2 class="text-5xl font-extrabold text-purple-400">أدوات وتكتيكات حروب الجيل الخامس</h2>
+            </div>
+            <ul class="list-disc list-inside text-xl leading-relaxed text-gray-300 space-y-4">
+                <li><strong>الحرب السيبرانية:</strong> هجمات إلكترونية تستهدف البنية التحتية الحيوية، أنظمة الاتصالات، والشبكات الحكومية والخاصة.</li>
+                <li><strong>التضليل الإعلامي والأخبار الزائفة:</strong> نشر معلومات مضللة ومنحازة أو أكاذيب كاملة لتشكيل الرأي العام والتأثير على القرارات.</li>
+                <li><strong>حرب المعلومات:</strong> السيطرة على تدفق المعلومات، وتحليل البيانات الضخمة لاستغلال نقاط الضعف.</li>
+                <li><strong>التلاعب بالوعي الجمعي:</strong> استخدام وسائل التواصل الاجتماعي ومنصات الإنترنت للتأثير على عقول الجماهير وخلق انقسامات.</li>
+                <li><strong>العمليات النفسية:</strong> استهداف الحالة النفسية للمجتمعات والأفراد لإثارة الخوف، اليأس، أو الغضب.</li>
+                <li><strong>استغلال الأزمات الاجتماعية:</b> تضخيم المشاكل الداخلية (مثل الفقر، البطالة، التمييز) لخلق حالة من عدم الاستقرار.</li>
+                <li><strong>الوكلاء غير الحكوميين:</strong> استخدام مجموعات مسلحة غير نظامية، منظمات إرهابية، أو جماعات ضغط لتحقيق أهداف معينة.</li>
+            </ul>
+        </section>
+
+        <!-- Impact Section -->
+        <section id="impact" class="bg-gray-900 p-8 mb-10 rounded-3xl shadow-2xl scroll-mt-24 border border-gray-700">
+            <div class="flex items-center mb-8">
+                <!-- Icon for Impact -->
+                <div class="bg-purple-700 p-4 rounded-full shadow-lg mr-6 flex-shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap text-white">
+                        <path d="M4 14a1 1 0 0 1-.78-1.63L15.73 2.87a.99.99 0 0 1 1.49.13l3.78 5.4a1 1 0 0 1-.63 1.62L7.37 21.13a.99.99 0 0 1-1.49-.13L2.09 15.6a1 1 0 0 1 .63-1.62Z"/>
+                    </svg>
+                </div>
+                <h2 class="text-5xl font-extrabold text-purple-400">تأثير حروب الجيل الخامس</h2>
+            </div>
+            <ul class="list-disc list-inside text-xl leading-relaxed text-gray-300 space-y-4">
+                <li><strong>زعزعة الاستقرار الداخلي:</strong> إثارة الفتن والانقسامات داخل المجتمعات، مما يؤدي إلى ضعف التماسك الاجتماعي.</li>
+                <li><strong>تآكل الثقة:</strong> تقويض ثقة المواطنين في المؤسسات الحكومية، الإعلام، وحتى في بعضهم البعض.</li>
+                <li><strong>الضرر الاقتصادي:</strong> استهداف الأنظمة المالية والبنية التحتية الاقتصادية يمكن أن يؤدي إلى خسائر اقتصادية فادحة.</li>
+                <li><strong>التأثير على الأمن القومي:</strong> تهديد الأمن القومي للدول من خلال إضعاف قدراتها الدفاعية ونظمها الحيوية.</li>
+                <li><strong>تغيير المفاهيم والقيم:</strong> التأثير على الهوية الثقافية والقيم المجتمعية، مما يؤدي إلى تغييرات طويلة الأمد في السلوكيات.</li>
+                <li><strong>صعوبة الرد:</strong> نظرًا لغموض هذه الحروب، يصبح من الصعب على الدول تحديد الجهة المسؤولة وبالتالي الرد بشكل فعال.</li>
+            </ul>
+        </section>
+
+        <!-- Countermeasures Section -->
+        <section id="countermeasures" class="bg-gray-900 p-8 mb-10 rounded-3xl shadow-2xl scroll-mt-24 border border-gray-700">
+            <div class="flex items-center mb-8">
+                <!-- Icon for Countermeasures -->
+                <div class="bg-purple-700 p-4 rounded-full shadow-lg mr-6 flex-shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check text-white">
+                        <path d="M20 13c0 5-4 9-8 9s-8-4-8-9V5l8-3 8 3v8Z"/><path d="m9 12 2 2 4-4"/>
+                    </svg>
+                </div>
+                <h2 class="text-5xl font-extrabold text-purple-400">مواجهة حروب الجيل الخامس</h2>
+            </div>
+            <ul class="list-disc list-inside text-xl leading-relaxed text-gray-300 space-y-4">
+                <li><strong>تعزيز الوعي المجتمعي:</strong> تثقيف الأفراد حول مخاطر التضليل الإعلامي وكيفية التحقق من المعلومات.</li>
+                <li><strong>تطوير القدرات السيبرانية:</strong> بناء دفاعات قوية ضد الهجمات الإلكترونية وحماية البنية التحتية الحيوية.</li>
+                <li><strong>التعاون الدولي:</strong> تبادل المعلومات والخبرات مع الدول الأخرى لمواجهة التهديدات المشتركة.</li>
+                <li><strong>بناء المرونة الاجتماعية:</strong> تعزيز التماسك الاجتماعي، حل المشاكل الداخلية، وتقوية المؤسسات.</li>
+                <li><strong>الاستثمار في البحث والتطوير:</strong> مواكبة التطورات التكنولوجية واستخدامها في الدفاع.</li>
+                <li><strong>الشفافية والمصداقية:</strong> تقديم معلومات دقيقة وشفافة للمواطنين لبناء الثقة ومواجهة الشائعات.</li>
+                <li><strong>تطوير القوانين والتشريعات:</strong> سن قوانين لمكافحة الجرائم السيبرانية والتضليل الإعلامي.</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 text-gray-400 p-8 text-center mt-16 rounded-t-3xl shadow-inner border-t border-gray-700">
+        <p class="text-lg">&copy; 2025 Eng. Ahmed El-kholy. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navLinks = document.querySelectorAll('nav a'); // Both desktop and mobile links
+            const header = document.querySelector('header'); // Get the header element
+
+            // Toggle mobile menu visibility
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('open');
+            });
+
+            // Smooth scrolling for navigation links
+            navLinks.forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        // Close mobile menu if open
+                        if (mobileMenu.classList.contains('open')) {
+                            mobileMenu.classList.remove('open');
+                        }
+
+                        // Calculate offset for fixed header
+                        const headerOffset = header.offsetHeight; // Use the defined header variable
+                        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                        const offsetPosition = elementPosition - headerOffset - 20; // Add some extra padding
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Close mobile menu when clicking outside (optional, but good for UX)
+            document.addEventListener('click', (event) => {
+                // Ensure header is defined before using it
+                if (header && !header.contains(event.target) && mobileMenu.classList.contains('open')) {
+                    mobileMenu.classList.remove('open');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
